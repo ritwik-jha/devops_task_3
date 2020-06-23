@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: task3-web-deploy
+spec:
+  replicas: 3
+  selector:
+    matchExpression:
+    - { key: env, operator: In, values: [ production ] }
+  template:
+    metadata:
+      name: mytask-pod
+      labels:
+        env: production 
+    spec:
+      containers:
+       - name: mytask-con
+         image: httpd
+	    volumeMounts:
+	    - mountPath: /var/www/html
+	      name: mypd
+	 volumes:
+	  - name: mypd
+	    persistentVolumeClaim:
+	      claimName: task3-pvc
