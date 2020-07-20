@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: Deployment 
-metadata:
-  name: task3-web-deploy
+kind: Deployment
+metadata: 
+  name: task3-web-deply
 spec:
   replicas: 3
   selector:
@@ -14,12 +14,13 @@ spec:
         env: production 
     spec:
       containers:
-       - name: mytask-con
-         image: httpd
-	    volumeMounts:
-	    - mountPath: /var/www/html
-	      name: mypd
-	 volumes:
-	  - name: mypd
-	    persistentVolumeClaim:
-	      claimName: task3-pvc
+      - name: mytask-con
+        image: httpd
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: mypd
+
+      volumes:
+      - name: mypd
+        persistentVolumeClaim:
+          claimName: task3-pvc
