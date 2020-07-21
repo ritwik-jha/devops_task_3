@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mytask-con
-        image: httpd
+        image: vimal13/apache-webserver-php:v2
         volumeMounts:
         - mountPath: /var/www/html
           name: mypd
